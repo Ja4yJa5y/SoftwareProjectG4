@@ -158,35 +158,4 @@ class EBook extends LibraryItems {
     }
 }
 
-class BorrowedBooks {
-    private static ArrayList<LibraryItems> borrowedBooksList = new ArrayList<>();
-
-    public static void borrowBook(String bookTitle) {
-        for (LibraryItems book : LibraryItems.libraryItemsList) {
-            if (book.getTitle().equalsIgnoreCase(bookTitle)) {
-                if (book.isAvailability()) {
-                    book.setAvailability(false);
-                    borrowedBooksList.add(book);
-                    System.out.println("You have successfully borrowed \"" + book.getTitle() + "\".");
-                    return;
-                } else {
-                    System.out.println("\"" + book.getTitle() + "\" is already borrowed.");
-                    return;
-                }
-            }
-        }
-        System.out.println("The book \"" + bookTitle + "\" is not in the library.");
-    }
-
-    public static void displayBorrowedBooks() {
-        if (borrowedBooksList.isEmpty()) {
-            System.out.println("No books have been borrowed yet.");
-        } else {
-            System.out.println("Borrowed Books:");
-            for (LibraryItems book : borrowedBooksList) {
-                System.out.println("- " + book.getTitle() + " by " + book.getAuthor());
-            }
-        }
-    }
-}
 
